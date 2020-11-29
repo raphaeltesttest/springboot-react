@@ -11,6 +11,7 @@ import{
 import { LoadingOutlined } from '@ant-design/icons';
 import Footer from './Footer';
 import Container from './Container';
+import AddStudentForm from './forms/AddStudentForm';
 
 const getIndicatorIcon = () => <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -108,6 +109,7 @@ fetchStudents = () => {
             onCancel={this.closeAddStudentModal}
             width={1000}>
             <h1>Hello Modal with antd</h1>
+            <AddStudentForm />
           </Modal>
           <Footer 
             numberOfStudents={students.length}
