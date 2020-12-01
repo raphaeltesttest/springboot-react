@@ -108,7 +108,6 @@ fetchStudents = () => {
             onOk={this.closeAddStudentModal}
             onCancel={this.closeAddStudentModal}
             width={1000}>
-            <h1>Hello Modal with antd</h1>
             <AddStudentForm />
           </Modal>
           <Footer 
