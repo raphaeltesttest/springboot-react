@@ -21,7 +21,7 @@ class App extends Component {
 state = {
   students: [],
   isFetching: false,
-  isAddStudentModalVisible: true
+  isAddStudentModalVisible: false
 }
 
 componentDidMount () {
@@ -101,14 +101,24 @@ fetchStudents = () => {
 
       return (
         <Container>
-          <Table dataSource={students} columns={columns} pagination={false} rowKey='studentId'/>
+          <Table
+            style={{marginBottom: '100px'}} 
+            dataSource={students} 
+            columns={columns} 
+            pagination={false} 
+            rowKey='studentId'/>
           <Modal
-            title= 'Add newstudent'
+            title= 'Add new student'
             visible={isAddStudentModalVisible}
             onOk={this.closeAddStudentModal}
             onCancel={this.closeAddStudentModal}
             width={1000}>
-            <AddStudentForm />
+            <AddStudentForm 
+              onSuccess={() => {
+                this.closeAddStudentModal();
+                this.fetchStudents();
+              }}
+            />
           </Modal>
           <Footer 
             numberOfStudents={students.length}
