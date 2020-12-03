@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { Input, Button, Tag } from 'antd';
 import { addNewStudent } from '../client';
@@ -6,9 +6,7 @@ import { addNewStudent } from '../client';
 const inputButtomMargin = {marginBottom: '10px'};
 const tagStyle = {backgroundColor: '#f50', color: 'white', ...inputButtomMargin};
 
-class AddStudentForm extends Component {
-    render () {
-        return (
+const AddStudentForm = (props) => (
             <Formik
               initialValues={{ firstName: '', lastName: '', email: '', gender: '' }}
               validate={values => {
@@ -40,7 +38,7 @@ class AddStudentForm extends Component {
               }}
               onSubmit={(student, { setSubmitting }) => {
                   addNewStudent(student).then(() => {
-                      this.props.onSuccess();
+                      props.onSuccess();
                       setSubmitting(false);
                   })
               }}>
@@ -109,7 +107,6 @@ class AddStudentForm extends Component {
               )}
             </Formik>
         ); 
-    }
-}
+    
 
 export default AddStudentForm;
