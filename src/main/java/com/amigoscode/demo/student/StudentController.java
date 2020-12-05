@@ -1,5 +1,6 @@
 package com.amigoscode.demo.student;
 
+import com.amigoscode.demo.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class StudentController {
 
     @GetMapping
     public List<Student> getAllStudents() {
-        throw new IllegalStateException("Cannot get all students");
+        throw new ApiRequestException("Cannot get all students with custom exception");
 //        return studentService.getAllStudents();
     }
 
