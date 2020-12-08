@@ -70,4 +70,19 @@ public class StudentDataAccessService {
             );
         };
     }
+
+    @SuppressWarnings("ConstantConditions")
+    boolean isEmailTaken(String email) {
+        String sql = "" +
+                "SELECT EXISTS ( " +
+                " SELECT 1 " +
+                " FROM student " +
+                " WHERE email = ?" +
+                ")";
+        return  jdbcTemplate.queryForObject(
+                sql,
+                new Object[] {email},
+                ((resultSet, i) -> resultSet.getBoolean(1))
+        );
+    }
 }

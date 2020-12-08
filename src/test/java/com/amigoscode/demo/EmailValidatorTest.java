@@ -17,4 +17,9 @@ public class EmailValidatorTest {
     public void itShouldValidateAnInCorrectEmail() {
         assertThat(underTest.test("hellogmail.com")).isFalse();
     }
+
+    @Test
+    public void itShouldValidateAnInCorrectEmailWithoutDotAtTheEnd() {
+        assertThat(underTest.test("hello@gmail")).isFalse();
+    }
 }
