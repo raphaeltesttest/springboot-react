@@ -1,5 +1,4 @@
 import './App.css';
-import { render } from '@testing-library/react';
 import{ getAllStudents } from './client';
 import { Component } from 'react';
 import{
